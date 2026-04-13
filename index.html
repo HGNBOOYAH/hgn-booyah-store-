@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="google-site-verification" content="5QZ3YBQzr_l07X1Us-hbAvsZhmsRLjncOkDuKvWhXVA" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HGN_BOOYAH_GENRAL_STORE | First Class Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== BASE STYLES ===== */
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #fff; color: #222; overflow-x: hidden; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes countUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes rotateIn { from { opacity: 0; transform: rotate(-10deg) scale(0.9); } to { opacity: 1; transform: rotate(0) scale(1); } }
+        @keyframes heroText { 0% { opacity: 0; transform: translateY(40px); letter-spacing: 15px; } 100% { opacity: 1; transform: translateY(0); letter-spacing: normal; } }
+
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        .animate-left { opacity: 0; transform: translateX(-60px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .animate-left.visible { opacity: 1; transform: translateX(0); }
+        .animate-right { opacity: 0; transform: translateX(60px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .animate-right.visible { opacity: 1; transform: translateX(0); }
+        .animate-scale { opacity: 0; transform: scale(0.85); transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .animate-scale.visible { opacity: 1; transform: scale(1); }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: transparent; transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(17, 17, 17, 0.95); padding: 12px 5%;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3); backdrop-filter: blur(10px);
+        }
+        .nav-logo {
+            font-family: 'Oswald', sans-serif; font-size: 1.6rem; color: #fdbb2d;
+            text-decoration: none; font-weight: 700; letter-spacing: 2px;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo:hover { transform: scale(1.05); }
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links a {
+            color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500;
+            position: relative; padding: 5px 0; transition: color 0.3s ease;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: #fdbb2d; transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: #fdbb2d; }
+        .nav-links a:hover::after { width: 100%; }
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; }
+        .menu-toggle span { width: 25px; height: 2px; background: white; transition: all 0.3s ease; display: block; }
+
+        /* ===== HERO ===== */
+        header {
+            background: linear-gradient(135deg, rgba(26,42,108,0.85), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=2074');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; color: white; padding: 0 10%;
+            position: relative;
+        }
+        header::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+            background: linear-gradient(transparent, white);
+        }
+        .hero-badge {
+            display: inline-block; padding: 8px 25px; border: 2px solid #fdbb2d; border-radius: 50px;
+            font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: #fdbb2d;
+            margin-bottom: 25px; animation: fadeIn 1s ease 0.2s both;
+        }
+        h1 {
+            font-family: 'Oswald', sans-serif; font-size: clamp(3rem, 10vw, 6rem);
+            text-transform: uppercase; animation: heroText 1.2s ease 0.4s both;
+            line-height: 1.1;
+        }
+        .tagline {
+            font-size: 1.4rem; color: #fdbb2d; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 5px; margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem; max-width: 600px; margin-bottom: 30px; opacity: 0.9;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; animation: fadeInUp 1s ease 1s both; }
+        .btn {
+            display: inline-block; padding: 15px 40px; background: #fdbb2d; color: #111;
+            text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid #fdbb2d; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(253,187,45,0.4); }
+        .btn-outline {
+            background: transparent; color: white; border: 2px solid white;
+        }
+        .btn-outline:hover { background: white; color: #111; box-shadow: 0 10px 30px rgba(255,255,255,0.2); }
+
+        /* ===== MARQUEE BANNER ===== */
+        .marquee-banner {
+            background: #fdbb2d; color: #111; padding: 14px 0; overflow: hidden;
+            font-weight: 600; font-size: 0.95rem; position: relative; z-index: 1;
+        }
+        .marquee-content {
+            display: flex; gap: 60px; animation: marquee 25s linear infinite; white-space: nowrap;
+        }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content span { display: flex; align-items: center; gap: 10px; }
+
+        /* ===== SECTION STYLES ===== */
+        .section-padding { padding: 100px 5%; }
+        .section-center { max-width: 1300px; margin: auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header .label {
+            display: inline-block; color: #fdbb2d; font-weight: 600; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px;
+        }
+        .section-header h2 {
+            font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem);
+            color: #1a2a6c; text-transform: uppercase; margin-bottom: 15px;
+        }
+        .section-header p { color: #666; max-width: 600px; margin: auto; font-size: 1.05rem; }
+        .section-dark { background: #111; color: white; }
+        .section-dark .section-header h2 { color: white; }
+        .section-light { background: #f9f9f5; }
+
+        /* ===== CATEGORIES ===== */
+        .categories-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+        }
+        .category-card {
+            position: relative; border-radius: 20px; overflow: hidden; height: 240px;
+            cursor: pointer; transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .category-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .category-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .category-card:hover img { transform: scale(1.1); }
+        .category-card .overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(transparent 40%, rgba(0,0,0,0.8));
+            display: flex; align-items: flex-end; padding: 20px;
+            transition: background 0.4s ease;
+        }
+        .category-card:hover .overlay { background: linear-gradient(transparent 20%, rgba(26,42,108,0.85)); }
+        .category-card h3 {
+            color: white; font-family: 'Oswald', sans-serif; font-size: 1.3rem;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* ===== FEATURED PRODUCTS ===== */
+        .products-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: white; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+        .product-img {
+            height: 220px; overflow: hidden; position: relative;
+        }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .product-card:hover .product-img img { transform: scale(1.08); }
+        .product-badge {
+            position: absolute; top: 15px; left: 15px; background: #e74c3c; color: white;
+            padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+        }
+        .product-badge.new { background: #27ae60; }
+        .product-info { padding: 22px; }
+        .product-info .product-category { color: #fdbb2d; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .product-info h3 { font-size: 1.15rem; margin: 8px 0; color: #1a2a6c; }
+        .product-info .price { font-size: 1.3rem; font-weight: 700; color: #e74c3c; }
+        .product-info .old-price { text-decoration: line-through; color: #999; font-size: 0.95rem; margin-left: 8px; font-weight: 400; }
+
+        /* ===== DEALS BANNER ===== */
+        .deals-banner {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease infinite;
+            padding: 80px 5%; text-align: center; color: white;
+            position: relative; overflow: hidden;
+        }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .deals-banner h2 { font-family: 'Oswald', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); text-transform: uppercase; margin-bottom: 15px; }
+        .deals-banner p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.95; }
+        .countdown { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .countdown-item {
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            border-radius: 15px; padding: 20px 25px; min-width: 90px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .countdown-item .number { font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; display: block; }
+        .countdown-item .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+
+        /* ===== ABOUT / WHY US ===== */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img {
+            border-radius: 20px; overflow: hidden; position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .about-img img { width: 100%; display: block; transition: transform 0.6s ease; }
+        .about-img:hover img { transform: scale(1.03); }
+        .about-img .floating-badge {
+            position: absolute; bottom: 20px; right: 20px; background: #fdbb2d;
+            color: #111; padding: 15px 25px; border-radius: 15px;
+            font-family: 'Oswald', sans-serif; font-size: 1.1rem;
+            font-weight: 700; animation: float 3s ease-in-out infinite;
+        }
+        .about-content h2 { font-family: 'Oswald', sans-serif; font-size: 2.8rem; color: #1a2a6c; margin-bottom: 20px; text-transform: uppercase; }
+        .about-content p { color: #555; line-height: 1.8; margin-bottom: 25px; font-size: 1.05rem; }
+        .features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .feature-item {
+            display: flex; align-items: center; gap: 10px; padding: 12px 15px;
+            background: #f9f9f5; border-radius: 10px; transition: all 0.3s ease;
+        }
+        .feature-item:hover { background: #fdbb2d; transform: translateX(5px); }
+        .feature-item .icon { font-size: 1.3rem; }
+        .feature-item span { font-weight: 500; font-size: 0.95rem; }
+
+        /* ===== STATS ===== */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(26,42,108,0.9), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1604719312563-8912e9223c6a?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            padding: 80px 5%; color: white;
+        }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1100px; margin: auto; text-align: center; }
+        .stat-item { padding: 30px; }
+        .stat-number { font-family: 'Oswald', sans-serif; font-size: 3.5rem; color: #fdbb2d; font-weight: 700; }
+        .stat-label { font-size: 1rem; opacity: 0.9; margin-top: 5px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: white; padding: 40px 30px; border-radius: 20px; text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #1a2a6c, #fdbb2d);
+            transform: scaleX(0); transition: transform 0.4s ease;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+        .service-icon {
+            width: 70px; height: 70px; background: linear-gradient(135deg, #1a2a6c, #2d4aad);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; font-size: 1.8rem;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover .service-icon { transform: rotateY(180deg); }
+        .service-card h3 { font-size: 1.2rem; color: #1a2a6c; margin-bottom: 12px; }
+        .service-card p { color: #666; font-size: 0.95rem; line-height: 1.7; }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px); gap: 15px;
+        }
+        .gallery-item {
+            border-radius: 15px; overflow: hidden; position: relative; cursor: pointer;
+        }
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item .gallery-overlay {
+            position: absolute; inset: 0; background: rgba(26,42,108,0.6);
+            opacity: 0; display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.4s ease; color: white; font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-wrapper { position: relative; overflow: hidden; }
+        .testimonials-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: white; padding: 35px; border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s ease; position: relative;
+        }
+        .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .testimonial-card .stars { color: #fdbb2d; font-size: 1.1rem; margin-bottom: 15px; }
+        .testimonial-card p { color: #555; line-height: 1.8; font-style: italic; margin-bottom: 20px; font-size: 1rem; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar {
+            width: 50px; height: 50px; border-radius: 50%; background: #1a2a6c;
+            display: flex; align-items: center; justify-content: center;
+            color: #fdbb2d; font-weight: 700; font-family: 'Oswald', sans-serif; font-size: 1.2rem;
+        }
+        .testimonial-name { font-weight: 600; color: #1a2a6c; }
+        .testimonial-role { font-size: 0.85rem; color: #999; }
+        .quote-icon {
+            position: absolute; top: 20px; right: 25px; font-size: 3rem;
+            color: #f0f0f0; font-family: Georgia, serif; line-height: 1;
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter-section {
+            background: linear-gradient(135deg, #1a2a6c, #2d4aad);
+            padding: 80px 5%; text-align: center; color: white;
+        }
+        .newsletter-section h2 { font-family: 'Oswald', sans-serif; font-size: 2.5rem; margin-bottom: 15px; text-transform: uppercase; }
+        .newsletter-section p { max-width: 500px; margin: 0 auto 30px; opacity: 0.9; }
+        .newsletter-form { display: flex; max-width: 500px; margin: auto; gap: 10px; }
+        .newsletter-form input {
+            flex: 1; padding: 16px 25px; border: none; border-radius: 50px;
+            font-size: 1rem; outline: none;
+        }
+        .newsletter-form button {
+            padding: 16px 35px; background: #fdbb2d; border: none; border-radius: 50px;
+            font-weight: 700; font-size: 1rem; cursor: pointer; color: #111;
+            transition: all 0.3s ease; text-transform: uppercase;
+        }
+        .newsletter-form button:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(253,187,45,0.4); }
+
+        /* ===== LOCATION SECTION ===== */
+        .location-section { padding: 100px 5%; }
+        .content-section { max-width: 1300px; margin: auto; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .info-box h2 { font-family: 'Oswald', sans-serif; font-size: 2.8rem; color: #1a2a6c; margin-bottom: 20px; text-transform: uppercase; }
+        .info-box p { color: #555; line-height: 1.8; margin-bottom: 25px; }
+        .stat-bar {
+            background: #f9f9f5; padding: 25px; border-radius: 12px; margin-bottom: 15px;
+            border-left: 5px solid #fdbb2d; transition: all 0.3s ease;
+        }
+        .stat-bar:hover { transform: translateX(8px); box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .stat-bar strong { color: #1a2a6c; }
+        .map-container {
+            border-radius: 20px; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); background: #eee;
+            transition: transform 0.4s ease;
+        }
+        .map-container:hover { transform: scale(1.02); }
+        .map-container img { width: 100%; display: block; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0a0a; color: white; padding: 80px 5% 30px;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px; max-width: 1300px; margin: auto 0 auto auto;
+            padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-brand h3 {
+            font-family: 'Oswald', sans-serif; font-size: 2rem; color: #fdbb2d;
+            margin-bottom: 15px;
+        }
+        .footer-brand p { color: #888; line-height: 1.8; font-size: 0.95rem; }
+        .footer-col h4 {
+            font-size: 1.1rem; margin-bottom: 20px; color: white;
+            position: relative; padding-bottom: 10px;
+        }
+        .footer-col h4::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px;
+            background: #fdbb2d;
+        }
+        .footer-col a {
+            display: block; color: #888; text-decoration: none; padding: 6px 0;
+            transition: all 0.3s ease; font-size: 0.95rem;
+        }
+        .footer-col a:hover { color: #fdbb2d; transform: translateX(5px); }
+        .footer-bottom {
+            text-align: center; padding-top: 30px; max-width: 1300px;
+            margin: auto; color: #666; font-size: 0.9rem;
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background: #fdbb2d; color: #111; border: none; border-radius: 50%;
+            font-size: 1.3rem; cursor: pointer; opacity: 0; visibility: hidden;
+            transition: all 0.4s ease; z-index: 999; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .scroll-top.show { opacity: 1; visibility: visible; }
+        .scroll-top:hover { transform: translateY(-3px); background: #1a2a6c; color: #fdbb2d; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 200px); }
+            .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 800px) {
+            .grid-2, .about-grid { grid-template-columns: 1fr; }
+            .nav-links {
+                display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(17,17,17,0.98); flex-direction: column;
+                justify-content: center; align-items: center; gap: 25px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1.3rem; }
+            .menu-toggle { display: flex; }
+            .features-list { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .countdown { gap: 10px; }
+            .countdown-item { padding: 15px 18px; min-width: 70px; }
+            .countdown-item .number { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item:nth-child(1) { grid-column: span 1; }
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">HGN_BOOYAH</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home">
+        <div class="hero-badge">Est. 2024 &bull; Digri, Pakistan</div>
+        <p class="tagline">Welcome to the Best</p>
+        <h1>HGN_BOOYAH<br>GENERAL STORE</h1>
+        <p class="hero-subtitle">Where First Class Service is ON THE TOP. Fresh groceries, daily essentials, and unbeatable prices every day.</p>
+        <div class="hero-buttons">
+            <a href="#products" class="btn">Shop Now</a>
+            <a href="#location" class="btn btn-outline">Find Us</a>
+        </div>
+    </header>
+
+    <!-- SCROLLING MARQUEE -->
+    <div class="marquee-banner">
+        <div class="marquee-content">
+            <span>&#127813; Fresh Fruits Daily</span>
+            <span>&#127822; Farm Fresh Vegetables</span>
+            <span>&#129371; Premium Dairy Products</span>
+            <span>&#127838; Freshly Baked Goods</span>
+            <span>&#127846; Sweet Treats & Snacks</span>
+            <span>&#129385; Quality Spices & Herbs</span>
+            <span>&#128722; Weekly Deals Available</span>
+            <span>&#127813; Fresh Fruits Daily</span>
+            <span>&#127822; Farm Fresh Vegetables</span>
+            <span>&#129371; Premium Dairy Products</span>
+            <span>&#127838; Freshly Baked Goods</span>
+            <span>&#127846; Sweet Treats & Snacks</span>
+            <span>&#129385; Quality Spices & Herbs</span>
+            <span>&#128722; Weekly Deals Available</span>
+        </div>
+    </div>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="section-padding" id="categories">
+        <div class="section-center">
+            <div class="section-header animate-on-scroll">
+                <span class="label">Browse by Category</span>
+                <h2>Shop Our Departments</h2>
+                <p>Everything you need under one roof - from farm-fresh produce to household essentials</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card animate-on-scroll" style="transition-delay: 0.1s">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=600" alt="Fresh Fruits">
+                    <div class="overlay"><h3>Fresh Fruits</h3></div>
+                </div>
+                <div class="category-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=600" alt="Vegetables">
+                    <div class="overlay"><h3>Vegetables</h3></div>
+                </div>
+                <div class="category-card animate-on-scroll" style="transition-delay: 0.3s">
+                    <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&q=80&w=600" alt="Dairy Products">
+                    <div class="overlay"><h3>Dairy</h3></div>
+                </div>
+                <div class="category-card animate-on-scroll" style="transition-delay: 0.4s">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600" alt="Bakery">
+                    <div class="overlay"><h3>Bakery</h3></div>
+                </div>
+                <div class="category-card animate-on-scroll" style="transition-delay: 0.5s">
+                    <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=600" alt="Beverages">
+                    <div class="overlay"><h3>Beverages</h3></div>
+                </div>
+                <div class="category-card animate-on-scroll" style="transition-delay: 0.6s">
+                    <img src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&q=80&w=600" alt="Spices & Herbs">
+                    <div class="overlay"><h3>Spices</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="section-padding section-light" id="products">
+        <div class="section-center">
+            <div class="section-header animate-on-scroll">
+                <span class="label">Best Sellers</span>
+                <h2>Featured Products</h2>
+                <p>Hand-picked products with the best quality and unbeatable prices for our valued customers</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card animate-on-scroll" style="transition-delay: 0.1s">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&q=80&w=600" alt="Milk"
+                             onerror="this.src='https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=600'">
+                        <span class="product-badge">Sale</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Dairy</span>
+                        <h3>Milk</h3>
+                    </div>
+                </div>
+                <div class="product-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&q=80&w=600" alt="Fresh Milk">
+                        <span class="product-badge new">New</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Dairy</span>
+                        <h3>Farm Fresh Whole Milk</h3>
+                    </div>
+                </div>
+                <div class="product-card animate-on-scroll" style="transition-delay: 0.3s">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=600" alt="Basmati Rice">
+                        <span class="product-badge">Sale</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Grains</span>
+                        <h3>Premium Basmati Rice</h3>
+                    </div>
+                </div>
+                <div class="product-card animate-on-scroll" style="transition-delay: 0.4s">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=600" alt="Fresh Vegetables">
+                        <span class="product-badge new">Fresh</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Vegetables</span>
+                        <h3>Organic Vegetable Bundle</h3>
+                    </div>
+                </div>
+                <div class="product-card animate-on-scroll" style="transition-delay: 0.5s">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&q=80&w=600" alt="Cooking Oil">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Cooking</span>
+                        <h3>Pure Cooking Oil (5L)</h3>
+                    </div>
+                </div>
+                <div class="product-card animate-on-scroll" style="transition-delay: 0.6s">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&q=80&w=600" alt="Spices Collection">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Spices</span>
+                        <h3>Traditional Spice Box Set</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEALS COUNTDOWN BANNER -->
+    <section class="deals-banner">
+        <div class="animate-on-scroll">
+            <h2>Weekly Super Deals!</h2>
+            <p>Don't miss out on our weekly specials. Fresh deals every week on your favorite grocery items.</p>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="number" id="days">03</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="hours">14</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="minutes">27</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="seconds">45</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section-padding" id="about">
+        <div class="section-center">
+            <div class="about-grid">
+                <div class="about-img animate-left">
+                    <img src="https://images.unsplash.com/photo-1604719312563-8912e9223c6a?auto=format&fit=crop&q=80&w=800" alt="HGN Booyah Store Interior">
+                    <div class="floating-badge">Since 2024</div>
+                </div>
+                <div class="about-content animate-right">
+                    <span class="label" style="color: #fdbb2d; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px;">Why Choose Us</span>
+                    <h2>Your Trusted Neighborhood Store</h2>
+                    <p>At HGN_BOOYAH General Store, we believe in providing the finest quality products at the most affordable prices. Our store is more than just a shop &mdash; it's a community hub where families find everything they need.</p>
+                    <p>From farm-fresh produce delivered daily to premium household essentials, we take pride in curating only the best for our customers in Digri and surrounding areas.</p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="icon">&#9989;</span>
+                            <span>Farm Fresh Daily</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">&#9989;</span>
+                            <span>Best Prices</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">&#9989;</span>
+                            <span>Premium Quality</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">&#9989;</span>
+                            <span>Open 7 Days</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">&#9989;</span>
+                            <span>Loyalty Rewards</span>
+                        </div>
+                    </div>
+                    <a href="#location" class="btn">Visit Our Store</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item animate-on-scroll">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Products Available</div>
+            </div>
+            <div class="stat-item animate-on-scroll" style="transition-delay: 0.15s">
+                <div class="stat-number">2000+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-item animate-on-scroll" style="transition-delay: 0.3s">
+                <div class="stat-number">365</div>
+                <div class="stat-label">Days Open</div>
+            </div>
+            <div class="stat-item animate-on-scroll" style="transition-delay: 0.45s">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section-padding section-light" id="services">
+        <div class="section-center">
+            <div class="section-header animate-on-scroll">
+                <span class="label">What We Offer</span>
+                <h2>Our Services</h2>
+                <p>We go beyond just selling groceries - we provide a complete shopping experience</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.1s">
+                    <div class="service-icon">&#127813;</div>
+                    <h3>Fresh Produce Daily</h3>
+                    <p>We source our fruits and vegetables directly from local farms, ensuring maximum freshness every day.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.3s">
+                    <div class="service-icon">&#128176;</div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>We match any competitor's price. If you find it cheaper elsewhere, we'll beat that price for you.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.4s">
+                    <div class="service-icon">&#127873;</div>
+                    <h3>Loyalty Program</h3>
+                    <p>Earn points with every purchase and redeem them for exclusive discounts and special rewards.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.5s">
+                    <div class="service-icon">&#128247;</div>
+                    <h3>Custom Orders</h3>
+                    <p>Need something special? Place custom orders for events, parties, or bulk purchases at wholesale rates.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.6s">
+                    <div class="service-icon">&#128241;</div>
+                    <h3>WhatsApp Orders</h3>
+                    <p>Send your grocery list via WhatsApp and we'll prepare your order for pickup or delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORE GALLERY -->
+    <section class="section-padding" id="gallery">
+        <div class="section-center">
+            <div class="section-header animate-on-scroll">
+                <span class="label">Take a Look</span>
+                <h2>Our Store Gallery</h2>
+                <p>Step inside HGN_BOOYAH - a clean, organized, and welcoming shopping experience</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-scale">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800" alt="Store Interior">
+                    <div class="gallery-overlay">Store Interior</div>
+                </div>
+                <div class="gallery-item animate-scale" style="transition-delay: 0.1s">
+                    <img src="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?auto=format&fit=crop&q=80&w=600" alt="Fresh Produce Aisle">
+                    <div class="gallery-overlay">Fresh Produce</div>
+                </div>
+                <div class="gallery-item animate-scale" style="transition-delay: 0.2s">
+                    <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?auto=format&fit=crop&q=80&w=600" alt="Dairy Section">
+                    <div class="gallery-overlay">Dairy Section</div>
+                </div>
+                <div class="gallery-item animate-scale" style="transition-delay: 0.3s">
+                    <img src="https://images.unsplash.com/photo-1607349913338-fca6f7fc608c?auto=format&fit=crop&q=80&w=600" alt="Bakery Corner">
+                    <div class="gallery-overlay">Bakery Corner</div>
+                </div>
+                <div class="gallery-item animate-scale" style="transition-delay: 0.4s">
+                    <img src="https://images.unsplash.com/photo-1601598851547-4302969d0614?auto=format&fit=crop&q=80&w=600" alt="Spice Selection">
+                    <div class="gallery-overlay">Spice Collection</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section-padding section-light">
+        <div class="section-center">
+            <div class="section-header animate-on-scroll">
+                <span class="label">Customer Love</span>
+                <h2>What People Say</h2>
+                <p>Don't take our word for it - hear from our valued customers in the community</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll" style="transition-delay: 0.1s">
+                    <div class="quote-icon">&ldquo;</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>Best grocery store in Digri! The prices are unbeatable and the produce is always fresh. I shop here every week for my family.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div>
+                            <div class="testimonial-name">Ahmed Khan</div>
+                            <div class="testimonial-role">Regular Customer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll" style="transition-delay: 0.2s">
+                    <div class="quote-icon">&ldquo;</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>The quality of groceries here is outstanding. Everything is always fresh and the prices are very reasonable. Highly recommended!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">F</div>
+                        <div>
+                            <div class="testimonial-name">Fatima Shaikh</div>
+                            <div class="testimonial-role">Loyal Customer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll" style="transition-delay: 0.3s">
+                    <div class="quote-icon">&ldquo;</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>What sets HGN_BOOYAH apart is their customer service. The staff is always helpful and they really care about their community.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">M</div>
+                        <div>
+                            <div class="testimonial-name">Muhammad Ali</div>
+                            <div class="testimonial-role">Business Owner</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="animate-on-scroll">
+            <h2>Get Weekly Deals</h2>
+            <p>Subscribe to our newsletter and never miss out on exclusive offers, new arrivals, and seasonal discounts.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" aria-label="Email address">
+                <button type="button">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section class="location-section" id="location">
+        <div class="content-section">
+            <div class="section-header animate-on-scroll">
+                <span class="label">Visit Us Today</span>
+                <h2>Our Location</h2>
+                <p>Conveniently located in the heart of Digri - easy to find, plenty of parking</p>
+            </div>
+            <div class="grid-2">
+                <div class="info-box animate-left">
+                    <p>Come visit us and experience first-class service in person. Our friendly staff is always ready to help you find exactly what you need.</p>
+                    <div class="stat-bar"><strong>&#128205; Address:</strong> Street 6, Sector 3, Allah Abad Colony, Digri, MPK City, 69330</div>
+                    <div class="stat-bar"><strong>&#128338; Hours:</strong> 6:00 AM &mdash; 10:00 PM (Open Every Day)</div>
+                    <div class="stat-bar"><strong>&#128222; Phone:</strong> Available on WhatsApp</div>
+                    <div class="stat-bar"><strong>&#128231; Email:</strong> HGNBOOYAH@GMAIL.COM</div>
+                </div>
+                <div class="map-container animate-right">
+                    <img src="store-map.png.png" onerror="this.src='store-map.jpg'; this.onerror=function(){this.src='store-map.png'; this.onerror=null;}" alt="HGN Booyah Store Map Location">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>HGN_BOOYAH</h3>
+                <p>Your one-stop general store in Digri. We provide fresh groceries, daily essentials, and first-class customer service every single day.</p>
+                <p style="margin-top: 15px;"><strong>Email:</strong> HGNBOOYAH@GMAIL.COM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#categories">Categories</a>
+                <a href="#products">Products</a>
+                <a href="#about">About Us</a>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="#services">WhatsApp Orders</a>
+                <a href="#services">Custom Orders</a>
+                <a href="#services">Loyalty Program</a>
+            </div>
+            <div class="footer-col">
+                <h4>Store Info</h4>
+                <a href="#location">Our Location</a>
+                <a href="#location">Store Hours</a>
+                <a href="#location">Contact Us</a>
+                <a href="#gallery">Gallery</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 HGN_BOOYAH_GENRAL_STORE. All Rights Reserved. Where First Class Service is ON THE TOP.</p>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        // Scroll animations (Intersection Observer)
+        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll, .animate-left, .animate-right, .animate-scale').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Countdown timer (resets weekly)
+        function updateCountdown() {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+            const daysUntilSunday = (7 - dayOfWeek) % 7 || 7;
+            const target = new Date(now);
+            target.setDate(now.getDate() + daysUntilSunday);
+            target.setHours(23, 59, 59, 999);
+
+            const diff = target - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollTopBtn.classList.toggle('show', window.scrollY > 500);
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
